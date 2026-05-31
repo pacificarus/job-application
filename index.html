@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Our Team | Hiring Application</title>
+  <meta name="description" content="Apply to join our team. Fill out our quick application form and we'll be in touch soon." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#fdf8f0',
+              100: '#faefd9',
+              200: '#f5dba8',
+              300: '#eec56d',
+              400: '#e5a83a',
+              500: '#d4881e',
+              600: '#b86a14',
+              700: '#964f12',
+              800: '#7a3f15',
+              900: '#653514',
+              950: '#3a1b07',
+            },
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+            'slide-up': 'slideUp 0.5s ease-out forwards',
+            'spin-slow': 'spin 1s linear infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%':   { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Custom multi-select styling */
+    select[multiple] {
+      background-image: none;
+    }
+    select[multiple] option {
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    select[multiple] option:checked {
+      background: linear-gradient(0deg, #d4881e 0%, #e5a83a 100%) !important;
+      color: white;
+    }
+    /* File input polish */
+    input[type="file"]::file-selector-button {
+      background: #1c1917;
+      color: #faefd9;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 12px;
+      transition: background 0.2s;
+    }
+    input[type="file"]::file-selector-button:hover {
+      background: #292524;
+    }
+    /* Remove number input arrows */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] { -moz-appearance: textfield; }
+
+    /* Focus glow */
+    .field-input:focus {
+      box-shadow: 0 0 0 3px rgba(212, 136, 30, 0.25);
+    }
+    /* Error state */
+    .field-error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+
+    /* Custom radio cards */
+    .radio-card {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .radio-card:hover {
+      border-color: #d4881e;
+      background: rgba(212, 136, 30, 0.06);
+    }
+    .radio-card.selected {
+      border-color: #d4881e;
+      background: rgba(212, 136, 30, 0.1);
+      box-shadow: 0 0 0 3px rgba(212, 136, 30, 0.2);
+    }
+    .radio-card .radio-dot {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #57534e;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .radio-card.selected .radio-dot {
+      border-color: #d4881e;
+    }
+    .radio-card.selected .radio-dot::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d4881e;
+    }
+    .radio-card.field-error {
+      border-color: #ef4444 !important;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-stone-950 text-stone-100 font-sans antialiased">
+
+  <!-- Background texture overlay -->
+  <div class="fixed inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 20% 50%, rgba(212,136,30,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(212,136,30,0.05) 0%, transparent 50%);"></div>
+
+  <!-- Page wrapper -->
+  <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12">
+
+    <!-- Header -->
+    <div class="text-center mb-10 animate-fade-in">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-500/20 border border-brand-500/30 mb-5">
+        <svg class="w-8 h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-800 font-extrabold tracking-tight text-white mb-3">
+        Join Our Team
+      </h1>
+      <p class="text-stone-400 text-lg max-w-md mx-auto leading-relaxed">
+        We're always looking for talented individuals. Tell us a bit about yourself and let's talk.
+      </p>
+    </div>
+
+    <!-- ── FORM CARD ── -->
+    <div id="form-card" class="w-full max-w-2xl animate-slide-up">
+      <div class="bg-stone-900/80 backdrop-blur-md border border-stone-800 rounded-3xl shadow-2xl p-8 sm:p-10">
+
+        <form id="hiring-form" novalidate>
+
+          <!-- ── Row: Full Name & Age ── -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+            <!-- Full Name -->
+            <div class="sm:col-span-2">
+              <label for="fullName" class="block text-sm font-semibold text-stone-300 mb-2">Full Name <span class="text-brand-400">*</span></label>
+              <input
+                id="fullName" name="fullName" type="text"
+                placeholder="Jane Doe"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              />
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Please enter your full name.</p>
+            </div>
+
+            <!-- Age -->
+            <div>
+              <label for="age" class="block text-sm font-semibold text-stone-300 mb-2">Age <span class="text-brand-400">*</span></label>
+              <input
+                id="age" name="age" type="number" min="16" max="99"
+                placeholder="25"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              />
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Enter a valid age (16–99).</p>
+            </div>
+          </div>
+
+          <!-- ── Row: Phone & Email ── -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-stone-300 mb-2">Phone Number <span class="text-brand-400">*</span></label>
+              <input
+                id="phone" name="phone" type="tel"
+                placeholder="(808) 555-0100"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              />
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Please enter a valid phone number.</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-semibold text-stone-300 mb-2">Email Address <span class="text-brand-400">*</span></label>
+              <input
+                id="email" name="email" type="email"
+                placeholder="jane@example.com"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-500 rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              />
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Please enter a valid email address.</p>
+            </div>
+          </div>
+
+          <!-- ── Row: Applying For & Experience In ── -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <!-- Applying For -->
+            <div>
+              <label for="applyingFor" class="block text-sm font-semibold text-stone-300 mb-2">
+                Applying For <span class="text-brand-400">*</span>
+              </label>
+              <p class="text-stone-500 text-xs mb-2">Hold <kbd class="bg-stone-700 px-1.5 py-0.5 rounded text-stone-300">Ctrl</kbd> / <kbd class="bg-stone-700 px-1.5 py-0.5 rounded text-stone-300">⌘</kbd> to select multiple</p>
+              <select
+                id="applyingFor" name="applyingFor" multiple size="3"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 rounded-xl px-2 py-1.5 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              >
+                <option value="Dishwashing">Dishwashing</option>
+                <option value="Server">Server</option>
+                <option value="Cook">Cook</option>
+              </select>
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Please select at least one position.</p>
+            </div>
+
+            <!-- Experience In -->
+            <div>
+              <label for="experienceIn" class="block text-sm font-semibold text-stone-300 mb-2">
+                Experience In <span class="text-brand-400">*</span>
+              </label>
+              <p class="text-stone-500 text-xs mb-2">Hold <kbd class="bg-stone-700 px-1.5 py-0.5 rounded text-stone-300">Ctrl</kbd> / <kbd class="bg-stone-700 px-1.5 py-0.5 rounded text-stone-300">⌘</kbd> to select multiple</p>
+              <select
+                id="experienceIn" name="experienceIn" multiple size="3"
+                class="field-input w-full bg-stone-800 border border-stone-700 text-stone-100 rounded-xl px-2 py-1.5 text-sm outline-none transition-all duration-200 focus:border-brand-500"
+              >
+                <option value="Dishwashing">Dishwashing</option>
+                <option value="Server">Server</option>
+                <option value="Cook">Cook</option>
+              </select>
+              <p class="error-msg text-red-400 text-xs mt-1.5 hidden">Please select at least one area of experience.</p>
+            </div>
+          </div>
+
+          <!-- ── Availability ── -->
+          <div class="mb-5">
+            <label class="block text-sm font-semibold text-stone-300 mb-3">
+              Availability <span class="text-brand-400">*</span>
+            </label>
+            <div id="availability-options" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="radio-card bg-stone-800 border border-stone-700 rounded-xl px-4 py-3.5 flex items-center gap-3" data-value="Full Time">
+                <div class="radio-dot"></div>
+                <span class="text-sm font-medium text-stone-200">Full Time</span>
+              </div>
+              <div class="radio-card bg-stone-800 border border-stone-700 rounded-xl px-4 py-3.5 flex items-center gap-3" data-value="Mornings">
+                <div class="radio-dot"></div>
+                <span class="text-sm font-medium text-stone-200">Mornings</span>
+              </div>
+              <div class="radio-card bg-stone-800 border border-stone-700 rounded-xl px-4 py-3.5 flex items-center gap-3" data-value="Evenings">
+                <div class="radio-dot"></div>
+                <span class="text-sm font-medium text-stone-200">Evenings</span>
+              </div>
+              <div class="radio-card bg-stone-800 border border-stone-700 rounded-xl px-4 py-3.5 flex items-center gap-3" data-value="Other Part Time">
+                <div class="radio-dot"></div>
+                <span class="text-sm font-medium text-stone-200">Other Part Time</span>
+              </div>
+            </div>
+            <p id="availability-error" class="text-red-400 text-xs mt-1.5 hidden">Please select your availability.</p>
+          </div>
+
+          <!-- ── Submit Button ── -->
+          <button
+            id="submit-btn"
+            type="submit"
+            class="w-full relative flex items-center justify-center gap-3 bg-brand-500 hover:bg-brand-400 active:bg-brand-600 text-white font-semibold text-base py-4 rounded-2xl transition-all duration-200 shadow-lg shadow-brand-900/40 hover:shadow-brand-700/40 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-stone-900"
+          >
+            <span id="btn-text">Submit Application</span>
+            <!-- Spinner (hidden by default) -->
+            <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </button>
+
+          <!-- General error banner -->
+          <div id="general-error" class="hidden mt-4 flex items-start gap-3 bg-red-950/50 border border-red-800/60 rounded-xl px-4 py-3">
+            <svg class="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            <p id="general-error-text" class="text-red-300 text-sm">Something went wrong. Please try again.</p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- ── THANK YOU CARD (hidden initially) ── -->
+    <div id="thank-you-card" class="hidden w-full max-w-2xl animate-fade-in">
+      <div class="bg-stone-900/80 backdrop-blur-md border border-stone-800 rounded-3xl shadow-2xl p-10 sm:p-14 text-center">
+        <!-- Animated checkmark -->
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-brand-500/15 border border-brand-500/30 mb-7 mx-auto">
+          <svg class="w-10 h-10 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-snug">
+          Thank You for Your Time!
+        </h2>
+        <p class="text-stone-400 text-lg leading-relaxed max-w-md mx-auto">
+          We will look over your application and let you know if we are moving forward with the application process.
+        </p>
+        <div class="mt-8 inline-block bg-stone-800/60 border border-stone-700 rounded-2xl px-6 py-4">
+          <p class="text-stone-400 text-sm">We appreciate your interest in joining our team. 🙌</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="mt-8 text-stone-600 text-xs text-center animate-fade-in">
+      Your information is kept private and will only be used for hiring purposes.
+    </p>
+
+  </div>
+
+  <script>
+    const WEBHOOK_URL = 'https://hook.us1.make.com/8ax68ycw4i5tk61d07nfgsadcz766jtr';
+
+    const form        = document.getElementById('hiring-form');
+    const submitBtn   = document.getElementById('submit-btn');
+    const btnText     = document.getElementById('btn-text');
+    const btnSpinner  = document.getElementById('btn-spinner');
+    const formCard    = document.getElementById('form-card');
+    const thankYou    = document.getElementById('thank-you-card');
+    const generalErr  = document.getElementById('general-error');
+    const generalErrT = document.getElementById('general-error-text');
+
+    let selectedAvailability = '';
+
+    /* ── Radio card logic ── */
+    document.querySelectorAll('#availability-options .radio-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('#availability-options .radio-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedAvailability = card.dataset.value;
+        // Clear error
+        document.getElementById('availability-error').classList.add('hidden');
+        document.querySelectorAll('#availability-options .radio-card').forEach(c => c.classList.remove('field-error'));
+      });
+    });
+
+    /* ── Validation helpers ── */
+    function showError(field, show) {
+      const input = document.getElementById(field);
+      const msg   = input.closest('div').querySelector('.error-msg');
+      if (show) {
+        input.classList.add('field-error');
+        msg && msg.classList.remove('hidden');
+      } else {
+        input.classList.remove('field-error');
+        msg && msg.classList.add('hidden');
+      }
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validatePhone(phone) {
+      return /^[\d\s\-\+\(\)]{7,20}$/.test(phone.trim());
+    }
+
+    function getSelectedValues(selectId) {
+      const select = document.getElementById(selectId);
+      return Array.from(select.selectedOptions).map(o => o.value);
+    }
+
+    /* ── Live clear-on-change ── */
+    ['fullName','age','phone','email'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => showError(id, false));
+    });
+    ['applyingFor','experienceIn'].forEach(id => {
+      document.getElementById(id).addEventListener('change', () => showError(id, false));
+    });
+
+
+    /* ── Form submit ── */
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      generalErr.classList.add('hidden');
+
+      const fullName    = document.getElementById('fullName').value.trim();
+      const age         = document.getElementById('age').value.trim();
+      const phone       = document.getElementById('phone').value.trim();
+      const email       = document.getElementById('email').value.trim();
+      const applyingFor = getSelectedValues('applyingFor');
+      const experienceIn = getSelectedValues('experienceIn');
+
+
+      let valid = true;
+
+      if (!fullName) { showError('fullName', true); valid = false; }
+      else showError('fullName', false);
+
+      const ageNum = parseInt(age, 10);
+      if (!age || isNaN(ageNum) || ageNum < 16 || ageNum > 99) { showError('age', true); valid = false; }
+      else showError('age', false);
+
+      if (!phone || !validatePhone(phone)) { showError('phone', true); valid = false; }
+      else showError('phone', false);
+
+      if (!email || !validateEmail(email)) { showError('email', true); valid = false; }
+      else showError('email', false);
+
+      if (applyingFor.length === 0) { showError('applyingFor', true); valid = false; }
+      else showError('applyingFor', false);
+
+      if (experienceIn.length === 0) { showError('experienceIn', true); valid = false; }
+      else showError('experienceIn', false);
+
+      if (!selectedAvailability) {
+        document.getElementById('availability-error').classList.remove('hidden');
+        document.querySelectorAll('#availability-options .radio-card').forEach(c => c.classList.add('field-error'));
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      /* ── Loading state ── */
+      submitBtn.disabled = true;
+      btnText.textContent = 'Submitting…';
+      btnSpinner.classList.remove('hidden');
+      submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+
+      try {
+        // Piggyback availability into experienceIn so Make/Airtable don't need changes
+        const experienceWithAvailability = experienceIn.join(', ') + ' | Availability: ' + selectedAvailability;
+
+        const payload = new FormData();
+        payload.append('fullName',     fullName);
+        payload.append('age',          age);
+        payload.append('phone',        phone);
+        payload.append('email',        email);
+        payload.append('applyingFor',  applyingFor.join(', '));
+        payload.append('experienceIn', experienceWithAvailability);
+
+
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          body:   payload,
+        });
+
+        if (!res.ok) throw new Error(`Server responded with status ${res.status}`);
+
+        /* ── Success ── */
+        formCard.classList.add('hidden');
+        thankYou.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      } catch (err) {
+        console.error('Submission error:', err);
+        generalErrT.textContent = 'Something went wrong while submitting. Please check your connection and try again.';
+        generalErr.classList.remove('hidden');
+
+        /* Reset button */
+        submitBtn.disabled = false;
+        btnText.textContent = 'Submit Application';
+        btnSpinner.classList.add('hidden');
+        submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+      }
+    });
+  </script>
+
+</body>
+</html>
