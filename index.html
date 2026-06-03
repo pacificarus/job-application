@@ -446,16 +446,14 @@
       submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
 
       try {
-        // Piggyback availability into experienceIn so Make/Airtable don't need changes
-        const experienceWithAvailability = experienceIn.join(', ') + ' | Availability: ' + selectedAvailability;
-
         const payload = new FormData();
         payload.append('fullName',     fullName);
         payload.append('age',          age);
         payload.append('phone',        phone);
         payload.append('email',        email);
         payload.append('applyingFor',  applyingFor.join(', '));
-        payload.append('experienceIn', experienceWithAvailability);
+        payload.append('experienceIn', experienceIn.join(', '));
+        payload.append('availability', selectedAvailability);
 
 
         const res = await fetch(WEBHOOK_URL, {
